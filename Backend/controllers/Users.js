@@ -16,12 +16,26 @@ const getUsers = async (req, res) => {
 
 const Register = async (req, res) => {
   const { name, email, password } = req.body;
-  const salt = await bcrypt.genSalt();
-  const hashPassword = await bcrypt.hash(password, salt);
+
   try {
-    const insertUserStr = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+    // Check if the email or name already exists
+    const checkUserStr = "SELECT id FROM users WHERE email = ? OR name = ?";
+    const existingUser = await query(checkUserStr, [email, name]);
+
+    if (existingUser.length > 0) {
+      // Email or name already exists, return an error
+      return res.status(400).json({ error: "Email atau nama sudah terdaftar" });
+    }
+
+    // Email and name are not registered, proceed with registration
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
+
+    const insertUserStr =
+      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
     await query(insertUserStr, [name, email, hashPassword]);
-    res.json({ msg: "Register Berhasil" });
+
+    res.json({ msg: "Register Berhasil", username: name });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -46,9 +60,28 @@ const login = async (req, res) => {
       { userId, name, email },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "30s", // or a specific time in seconds
+        expiresIn: "30s",
       }
     );
+
+    const refreshToken = jwt.sign(
+      { userId },
+      process.env.REFRESH_TOKEN_SECRET,
+      {
+        expiresIn: "7d", // Set the expiration time for the refresh token
+      }
+    );
+
+    // Update the refresh_token in the database
+    const updateRefreshTokenStr = "UPDATE users SET refresh_token = ? WHERE id = ?";
+    await query(updateRefreshTokenStr, [refreshToken, userId]);
+
+    // Set refreshToken cookie
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+    });
 
     res.json({ accessToken });
   } catch (error) {
@@ -56,6 +89,7 @@ const login = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 const Logout = async (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   if (!refreshToken) return res.sendStatus(204);

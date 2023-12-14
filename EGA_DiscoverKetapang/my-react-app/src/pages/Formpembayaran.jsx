@@ -2,27 +2,44 @@ import React, { useState } from "react";
 import Navbarwisata from "../Component/Fragments/Navbarwisata";
 import { Link } from "react-router-dom";
 import Footercomponent from "../Component/Fragments/Footercomponent";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+// import { Button } from "react-bootstrap";
+
 
 const Formpembayaran = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    date: "",
-    package: "",
-    guide: "",
-    email: "",
-    phone: "",
-    paymentMethod: "",
-  });
+  const [nama, setNama] = useState("");
+  const [tiket, setTiket] = useState("");
+  const [tanggal, setTanggal] = useState("");
+  const [email, setEmail] = useState("");
+  const [paket_wisata, setPaket] = useState("");
+  const [pemandu, setPemandu] = useState("");
+  const [No_hp, setNohp] = useState("");
+  const navigation = useNavigate();
+  const [msg, setMsg] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const handleSubmit = (e) => {
+  const payment = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Handle form submission here
+    try {
+      await axios.post("http://localhost:5000/formpayment", {
+        nama,
+        tiket,
+        tanggal,
+        email,
+        paket_wisata,
+        pemandu,
+        No_hp
+      });
+      navigation("/payment");
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
   };
+
+  
 
   return (
     <div
@@ -75,10 +92,13 @@ const Formpembayaran = () => {
           </div>
         </div>
         <div className="d-flex justify-content-evenly mb-5">
-          <form className="Formpembayaran">
+        <p className="has text-centered">{msg}</p>
+          <form  onSubmit={payment} className="Formpembayaran">
             <div>
-              <label for="fname">Nama Pemesan</label>
-              <input type="text" id="nama" value="Chesa" name="nama"></input>
+              <label htmlFor="fname">Nama Pemesan</label>
+              <input type="text" id="nama" name="nama" 
+                onChange={(e) => setNama(e.target.value)}
+                ></input>
             </div>
             <br></br>
             <div>
@@ -91,13 +111,12 @@ const Formpembayaran = () => {
                 }}
                 type="number"
                 name="tiket"
-                min={0}
-                value={2}
+                onChange={(e) => setTiket(e.target.value)}
               />
             </div>
             <br></br>
             <div>
-              <label>Tanggal</label>
+              <label>Tanggal Booking</label>
               <input
                 style={{
                   padding: "8px 10px 8px 10px",
@@ -105,43 +124,49 @@ const Formpembayaran = () => {
                   border: "none",
                 }}
                 type="date"
-                name="tiket"
+                name="tanggal"
+                onChange={(e) => setTanggal(e.target.value)}
               />
             </div>
             <br></br>
             <div>
               <label>Paket Wisata</label>
-              <select
+              <select onChange={(e) => setPaket(e.target.value)}
                 style={{
                   padding: "8px 10px 8px 10px",
                   borderRadius: "5px",
                   border: "none",
                 }}
               >
+                <option value="" disabled selected>Pilih Paket</option>
+
                 <option value="Paket 1">Paket 1</option>
                 <option value="Paket 2">Paket 2</option>
                 <option value="Paket 3">Paket 3</option>
               </select>
+            
             </div>
             <br></br>
             <div>
               <label>Pemandu</label>
-              <select
+              <select onChange={(e) => setPemandu(e.target.value)}
                 style={{
                   padding: "8px 10px 8px 10px",
                   borderRadius: "5px",
                   border: "none",
                 }}
               >
-                <option value="Pemandu 1">Nurhayati</option>
-                <option value="Pemandu 2">Rendiansyah</option>
-                <option value="Pemandu 3">Oktavia Putri</option>
+                <option value="" disabled selected>Pilih Pemandu</option>
+                <option value="Nurhayati">Nurhayati</option>
+                <option value="Rendiansyah">Rendiansyah</option>
+                <option value="Oktavia Putri">Oktavia Putri</option>
+    
               </select>
             </div>
             <br></br>
             <div>
               <label>Email</label>
-              <input type="email" value="chesaolivia99@gmail.com"></input>
+              <input type="email" onChange={(e)=> setEmail(e.target.value)}></input>
             </div>
             <br></br>
             <div>
@@ -153,30 +178,12 @@ const Formpembayaran = () => {
                   border: "none",
                 }}
                 type="tel"
-                value="085932441121"
+                onChange={(e)=> setNohp(e.target.value)}
               ></input>
             </div>
-            <br></br>
-            <div className="mb-5">
-              <label>Metode Pembayaran</label>
-              <select
-                style={{
-                  padding: "8px 10px 8px 10px",
-                  borderRadius: "5px",
-                  border: "none",
-                }}
-              >
-                <option value="Payment 1">QRIS</option>
-                <option value="Payment 2">BCA</option>
-                <option value="Payment 3">Mandiri</option>
-              </select>
-            </div>
+            <br></br>-
             <br></br>
             <div className="mb-3">
-              <Link
-                style={{ marginLeft: "auto", marginRight: "auto" }}
-                to="/payment"
-              >
                 <input
                   style={{
                     width: "200px",
@@ -189,7 +196,6 @@ const Formpembayaran = () => {
                   type="submit"
                   value="Pesan Sekarang"
                 ></input>
-              </Link>
             </div>
           </form>
         </div>

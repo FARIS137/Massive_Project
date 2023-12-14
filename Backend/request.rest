@@ -6,7 +6,7 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "hawa",
+    "name": "budi",
     "email": "saya@gmail.com",
     "password": "12345678"
 }
@@ -48,5 +48,27 @@ POST http://localhost:5000/daftarPemandu
 
 ###
 GET http://localhost:5000/daftarPemandu
+
+
+###
+GET http://localhost:5000/formpayment
+
+
+###
+POST http://localhost:5000/formpayment
+Content-Type: application/json
+
+{
+    "nama": "faris",
+    "tiket": "2",
+   "tanggal": "2023-07-17",
+    "paket_wisata":"paket 3",
+    "pemandu": "sania",
+    "email": "saya@gmail.com",
+    "No_hp": "08976543213"
+}
+
+
+
 
 

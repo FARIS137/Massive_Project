@@ -4,37 +4,33 @@ import Qris from "../../src/assets/img/Qris.png";
 import Footercomponent from "../Component/Fragments/Footercomponent";
 import Navbarwisata from "../Component/Fragments/Navbarwisata";
 import axios from "axios";
+import jwt from "jsonwebtoken";
+
+import { useEffect } from "react";
 
 const Paymentpages = () => {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
   const [nama, setNama] = useState("");
-  const [tiket, setTiket] = useState("");
-  const [tanggal, setTanggal] = useState("");
   const [email, setEmail] = useState("");
   const [No_hp, setNohp] = useState("");
+  const [tanggal, setTanggal] = useState("");
   const [bookingData, setBookingData] = useState({});
+  const [msg, setMsg] = useState("");
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/formpayment", {
-         nama,
-         email,
-         No_hp,
-         tanggal,
-      });
+      const response = await axios.get("http://localhost:5000/formpayment");
+      setToken(response.data.accessToken);
+      const decoded = jwt.verify(response.data.accessToken);
+       console.log(decoded);
+      setNama(decoded.nama);
+      setEmail(decoded.email);
+      setNohp(decoded.No_hp);
+      setTanggal(decoded.tanggal);
+
 
       // Assuming the response.data contains the booking data
       setBookingData(response.data);
@@ -43,10 +39,6 @@ const Paymentpages = () => {
         setMsg(error.response.data.msg);
       }
     }
-  };
-  const handlePayment = () => {
-    // You can perform any logic you need before making the payment
-    fetchData();
   };
 
   return (
@@ -92,17 +84,17 @@ const Paymentpages = () => {
                 <h3>Data Pemesanan</h3>
                 <div className="mx-4">
                   <p>
-                    Nama <span style={{ marginLeft: "107px" }}>:</span> {nama} {}
+                    Nama <span style={{ marginLeft: "107px" }}>:</span> {nama}
                   </p>
                   <p>
                     Email <span style={{ marginLeft: "113px" }}>:</span> {email}
                   </p>
                   <p>
-                    No. Telepon <span style={{ marginLeft: "63px" }}>:</span>{" "}
+                    No. Telepon <span style={{ marginLeft: "63px" }}>:</span>
                     {No_hp}
                   </p>
                   <p>
-                    Booking Date <span style={{ marginLeft: "50px" }}>:</span>{" "}
+                    Booking Date <span style={{ marginLeft: "50px" }}>:</span>
                     {tanggal}
                   </p>
                 </div>
