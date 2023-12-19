@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import imageAdat from "../../assets/img/wisata/wisataS/RumahAdatMelayu.png";
-import imageMakam from "../../assets/img/wisata/wisataS/imagemakam.png";
+import imageMakam from "../../assets/img/wisata/wisataS/RAD.png";
 import "./WisataScard.css";
 
 const CenteredCard2 = () => {

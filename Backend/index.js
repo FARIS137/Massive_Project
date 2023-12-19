@@ -7,16 +7,17 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const query = require("./config/Database.js");
 const fs = require("fs");
+const routes = require("./api/payments/routes.js");
 
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/api/payments", routes);
 app.use(router);
-
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -28,12 +29,20 @@ router.post("/daftarPemandu", upload.single("cv"), async (req, res) => {
   console.log("Request File:", req.file);
 
   const { nama_lengkap, jenis_kelamin, email, No_Handphone } = req.body;
-  const cvBuffer = req.file.buffer; 
+  const cvBuffer = req.file.buffer;
 
   try {
     // Lakukan operasi dengan data yang diterima dari formulir
-    const insertPemanduStr = "INSERT INTO daftarPemandu (nama_lengkap, jenis_kelamin, email, No_Handphone, cv, createdAt) VALUES (?, ?, ?, ?, ?, ?)";
-await query(insertPemanduStr, [nama_lengkap, jenis_kelamin, email, No_Handphone, cvBuffer, formattedDate]);
+    const insertPemanduStr =
+      "INSERT INTO daftarPemandu (nama_lengkap, jenis_kelamin, email, No_Handphone, cv, createdAt) VALUES (?, ?, ?, ?, ?, ?)";
+    await query(insertPemanduStr, [
+      nama_lengkap,
+      jenis_kelamin,
+      email,
+      No_Handphone,
+      cvBuffer,
+      formattedDate,
+    ]);
 
     res.json({ status: "Success" });
   } catch (error) {
@@ -55,7 +64,6 @@ router.get("/downloadCV/:id", async (req, res) => {
 
     const cvBuffer = result[0].cv;
 
-
     // Kirim buffer sebagai respons
     res.send(cvBuffer);
   } catch (error) {
@@ -64,8 +72,7 @@ router.get("/downloadCV/:id", async (req, res) => {
   }
 });
 
-
-// 
+//
 
 // Server listening
 const PORT = 5000;

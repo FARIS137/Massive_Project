@@ -1,5 +1,5 @@
 GET http://localhost:5000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJmYXJpcyIsImVtYWlsIjoic2F5YUBnbWFpbC5jb20iLCJpYXQiOjE3MDE2NzE3MjUsImV4cCI6MTcwMTY3MTc1NX0.bCOkOVpirXGgdvDTxsszxyB-7rBiYl1oEv2dlj3zHUQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc0LCJuYW1lIjoiYnVkaSIsImVtYWlsIjoic2F5YUBnbWFpbC5jb20iLCJpYXQiOjE3MDI2NjA0MjEsImV4cCI6MTcwMjY2MDQ1MX0.5JapGorbxZfhjV23ONi9mXsdxkNfPPgRBL96NETD50o
 
 ###
 POST http://localhost:5000/users
@@ -68,6 +68,8 @@ Content-Type: application/json
     "No_hp": "08976543213"
 }
 
+###
+PUT http://localhost:5000/change-password
 
 
 

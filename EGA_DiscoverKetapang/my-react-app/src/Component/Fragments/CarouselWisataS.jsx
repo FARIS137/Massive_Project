@@ -10,7 +10,7 @@ function CarouselWS() {
   return (
     <div className="d-flex justify-content-center align-items-center vh-60">
       <div style={{ width: "70%" }}>
-        <img style={{ width: "70%" }} src={image1} alt="First slide" />
+        <img style={{ width: "70%", marginBottom: "4rem" }} src={image1} alt="First slide" />
       </div>
     </div>
   );

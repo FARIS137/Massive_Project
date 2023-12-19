@@ -7,6 +7,8 @@ import Strengthcard from "../Component/Fragments/Strengthcard";
 import Cardtop3 from "../Component/Fragments/Cardtop3";
 import AboutCard from "../Component/Fragments/AboutCard";
 import Footercomponent from "../Component/Fragments/Footercomponent";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 import { Link } from "react-router-dom";
 const Homepages = () => {
@@ -134,7 +136,7 @@ const Homepages = () => {
                   style={{ textDecoration: "none", color: "white" }}
                   to="/paketwisata1"
                 >
-                  Selengkapnya >
+                  Selengkapnya &gt;
                 </Link>
               </h4>
             </div>

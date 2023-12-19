@@ -149,22 +149,7 @@ const WisatapagesA = () => {
                     src={Square1}
                     alt="Square 1"
                   />
-                  {/* <p
-                  style={{
-                    position: "absolute",
-                    top: "350%",
-                    left: 0,
-                    right: 0,
-                    transform: "translate(0, 0)",
-                    backgroundColor: "rgba(192, 192, 192, 0.6)",
-                    color: "black",
-                    padding: "6px",
-                    margin: "10px",
-                    textAlign: "center",
-                  }}
-                >
-                  Pantai Katembe
-                </p> */}
+                
                 </a>
                 <a href="#Penjelasan2" style={{ position: "relative" }}>
                   <img
@@ -172,22 +157,7 @@ const WisatapagesA = () => {
                     src={Square2}
                     alt="Square 2"
                   />
-                  {/* <p
-                  style={{
-                    position: "absolute",
-                    top: "350%",
-                    left: 0,
-                    right: 0,
-                    transform: "translate(0, 0)",
-                    backgroundColor: "rgba(192, 192, 192, 0.6)",
-                    color: "black",
-                    padding: "6px",
-                    margin: "10px",
-                    textAlign: "center",
-                  }}
-                >
-                  Pantai Mutiara
-                </p> */}
+                 
                 </a>
                 <a href="#Penjelasan3" style={{ position: "relative" }}>
                   <img
@@ -195,22 +165,7 @@ const WisatapagesA = () => {
                     src={Square3}
                     alt="Square 3"
                   />
-                  {/* <p
-                  style={{
-                    position: "absolute",
-                    top: "350%",
-                    left: 0,
-                    right: 0,
-                    transform: "translate(0, 0)",
-                    backgroundColor: "rgba(192, 192, 192, 0.6)",
-                    color: "black",
-                    padding: "6px",
-                    margin: "5px",
-                    textAlign: "center",
-                  }}
-                >
-                  Danau Anonotei
-                </p> */}
+                
                 </a>
               </div>
             </div>
@@ -249,13 +204,13 @@ const WisatapagesA = () => {
           <section id="Penjelasan1">
             <div className="d-flex align-items-center justify-content-around">
               <div className="text-light text-end">
-                <img className="img-fluid" src={num1} alt="Number 1" />
+                <img className="img-fluid" src={num1}  alt="Number 1" />
 
                 <div className="d-flex align-items-end justify-content-between">
                   <h2 style={{ textAlign: "right" }}>Bukit Batu Daya</h2>
                 </div>
                 <hr style={{ borderWidth: "3px" }} />
-                <p style={{ textAlign: "justify", width: "590px" }}>
+                <p style={{ textAlign: "justify", width: "590px", }}>
                   Bukit Batu Daya merupakan destinasi wisata yang paling
                   digemari. Bukit Batu Daya menawarkan pesona alam yang sangat
                   diminati oleh wisatawan. Dengan pemandangan yang menakjubkan,
@@ -267,36 +222,9 @@ const WisatapagesA = () => {
               </div>
               <div>
                 <div className="user d-flex gap-4 ">
-                  {/* <Link
-                  to="/datapemandu"
-                  className="d-flex text-decoration-none text-white gap-2 "
-                >
-                  <img
-                    src={iconuser}
-                    alt="user"
-                    style={{
-                      width: 20,
-                      height: 23,
-                    }}
-                  />
-                  <p>Cari pemandu</p>
-                </Link>
-                <Link
-                  to="https://maps.app.goo.gl/W3ckT37NfRjh7rdU7"
-                  className="d-flex text-decoration-none text-white gap-2 "
-                >
-                  <img
-                    src={iconmap}
-                    alt="map"
-                    style={{
-                      width: 20,
-                      height: 20,
-                    }}
-                  />
-                  <p>Maps</p>
-                </Link> */}
+                
                 </div>
-                <img className="img-fluids" src={Picture1} alt="Picture 1" />
+                <img className="img-fluids" src={Picture1} style={{marginLeft: "2rem", boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6)" }}  alt="Picture 1" />
               </div>
             </div>
           </section>
@@ -331,7 +259,7 @@ const WisatapagesA = () => {
                 </Link>
               </div>
               <div>
-                <img className="img-fluid" src={Picture2} alt="Picture 2" />
+                <img className="img-fluid" src={Picture2} style={{marginRight: "39rem", boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6)"}} alt="Picture 2" />
               </div>
             </div>
           </section>
@@ -368,7 +296,7 @@ const WisatapagesA = () => {
                 </Link>
               </div>
               <div>
-                <img className="img-fluid" src={Picture3} alt="Picture 3" />
+                <img className="img-fluid" src={Picture3} style={{marginLeft: "2rem", boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6)" }} alt="Picture 3" />
               </div>
             </div>
           </section>

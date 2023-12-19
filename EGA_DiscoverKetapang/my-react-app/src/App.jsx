@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Welcomepages from "./pages/Welcomepages";
 import Loginpages from "./pages/Loginpages";
 import Registerpages from "./pages/Registerpages";
@@ -19,13 +19,15 @@ import Testimonipages from "./pages/Testimonipages";
 import DetailWisataA1 from "./pages/detailwisataA1";
 import DetailWisataA2 from "./pages/detailwisataA2";
 import DetailWisataA3 from "./pages/detailwisataA3";
-import DetailWisataS2 from "./pages/detailwisataS2";
 import Paymentpages from "./pages/Paymentpages";
 import Donepayment from "./pages/Donepaymentpages";
 import Formpembayaran from "./pages/Formpembayaran";
 import Paketwisata1 from "./pages/Paketwisata1";
 import Paketwisata2 from "./pages/Paketwisata2";
 import Paketwisata3 from "./pages/Paketwisata3";
+import DetailwisataS1 from "./pages/detailwisataS1";
+import DetailwisataS2 from "./pages/detailwisataS2";
+import DetailwisataS3 from "./pages/detailwisataS3";
 
 function App() {
   return (
@@ -52,13 +54,15 @@ function App() {
         <Route path="/detailWisataA1" element={<DetailWisataA1 />} />
         <Route path="/detailwisataA2" element={<DetailWisataA2 />} />
         <Route path="/detailwisataA3" element={<DetailWisataA3 />} />
-        <Route path="/detailwisataS2" element={<DetailWisataS2 />} />
         <Route path="/payment" element={<Paymentpages />} />
         <Route path="/done" element={<Donepayment />} />
         <Route path="/form" element={<Formpembayaran />} />
         <Route path="/paketwisata1" element={<Paketwisata1 />} />
         <Route path="/paketwisata2" element={<Paketwisata2 />} />
         <Route path="/paketwisata3" element={<Paketwisata3 />} />
+        <Route path="/detailwisataS1" element={<DetailwisataS1 />} />
+        <Route path="/detailwisataS2" element={<DetailwisataS2 />} />
+        <Route path="/detailwisataS3" element={<DetailwisataS3 />} />
       </Routes>
       {/* <Footercomponent /> */}
     </>

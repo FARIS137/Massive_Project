@@ -26,4 +26,4 @@ async function DaftarPemandu() {
 
 // Call the createDaftarPemanduTable function to create the table when your application starts
 // module.exports = mysql; // Export MySQL connection
-module.exports= {DaftarPemandu};
+module.exports = { DaftarPemandu };

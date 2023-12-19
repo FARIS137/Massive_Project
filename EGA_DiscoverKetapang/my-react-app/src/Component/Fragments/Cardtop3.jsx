@@ -9,6 +9,7 @@ const Cardtop3 = () => {
       <div className="d-flex justify-content-center align-items-center">
         <div
           style={{
+            boxShadow: "4px 1px 2px 2px rgba(0, 0, 0, 0.5 )",
             backgroundImage: `url(${image1})`,
             width: "295px",
             height: "335px",
@@ -27,12 +28,13 @@ const Cardtop3 = () => {
               Paket<br></br> Eksplorasi Alam
             </h4>
             <Link to="/paketwisata1">
-              <button className="p-3 rounded ">Lihat Detail ></button>
+              <button className="p-3 rounded ">Lihat Detail &gt;</button>
             </Link>
           </div>
         </div>
         <div
           style={{
+            boxShadow: "4px 1px 2px 2px rgba(0, 0, 0, 0.5 )",
             backgroundImage: `url(${image2})`,
             width: "295px",
             height: "335px",
@@ -47,13 +49,14 @@ const Cardtop3 = () => {
             }}
           >
             <h4 className="text-light text-start">Paket Perjalanan Waktu</h4>
-            <Link to="/paketwisata2">
-              <button className="p-3 rounded ">Lihat Detail ></button>
+            <Link to="/paketwisata1">
+              <button className="p-3 rounded ">Lihat Detail &gt;</button>
             </Link>
           </div>
         </div>
         <div
           style={{
+            boxShadow: "4px 2px 2px 2px rgba(0, 0, 0, 0.5 )",
             backgroundImage: `url(${image3})`,
             width: "295px",
             height: "335px",
@@ -71,8 +74,8 @@ const Cardtop3 = () => {
             <h4 className="text-light text-start">
               Paket Petualangan dan Kuliner
             </h4>
-            <Link to="/paketwisata3">
-              <button className="p-3 rounded ">Lihat Detail ></button>
+            <Link to="/paketwisata1">
+              <button className="p-3 rounded ">Lihat Detail &gt;</button>
             </Link>
           </div>
         </div>

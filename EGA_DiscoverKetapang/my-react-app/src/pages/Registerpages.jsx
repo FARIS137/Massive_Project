@@ -10,7 +10,7 @@ const RegisterPages = () => {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [componentMounted, setComponentMounted] = useState(false);
-  // const [userName, setUserName] = useState("");
+
   const navigation = useNavigate();
 
   const registerUser = async (e) => {
@@ -21,23 +21,22 @@ const RegisterPages = () => {
         email,
         password,
       });
-  
-  
+
       // Set the user name in state
       navigation("/login");
     } catch (error) {
       if (error.response) {
         const { data } = error.response;
         let errorMessage = "";
-  
+
         if (data.error.includes("email")) {
           errorMessage = "Email sudah terdaftar";
         } else {
-          errorMessage = "Email sudah terdaftar";
+          errorMessage = "Email atau Nama sudah terdaftar";
         }
-  
+
         setErrorMsg(errorMessage);
-  
+
         setTimeout(() => {
           setErrorMsg("");
         }, 3000);

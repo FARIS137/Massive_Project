@@ -1,7 +1,7 @@
 const query = require("../config/Database.js");
 
 async function FormPayment() {
-    const createTableQuery = `
+  const createTableQuery = `
       CREATE TABLE IF NOT EXISTS formpayment (
         id INT PRIMARY KEY AUTO_INCREMENT,
         nama VARCHAR(255),
@@ -15,13 +15,13 @@ async function FormPayment() {
   
       )
     `;
-  
-    try {
-      const [result] = await query(createTableQuery);
-      console.log("Table 'formpayment' created or already exists.");
-    } catch (error) {
-      console.error("Error creating table:", error);
-    }
-  }
 
-module.exports= {FormPayment};
+  try {
+    const [result] = await query(createTableQuery);
+    console.log("Table 'formpayment' created or already exists.");
+  } catch (error) {
+    console.error("Error creating table:", error);
+  }
+}
+
+module.exports = { FormPayment };

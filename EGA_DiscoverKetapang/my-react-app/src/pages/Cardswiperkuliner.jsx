@@ -16,40 +16,35 @@ const Cardswipkuliner = [
     title: "Mie Sagu",
     images: "/images/mie-sagu.jpg",
   },
-
   {
     id: 4,
-    title: "jenjorong",
+    title: "Jenjorong",
     images: "/images/jenjorong.jpg",
   },
 ];
 
 const Cardswiperkuliner = () => {
   return (
-    <>
-      <Swiper
-        slidesPerView={3}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
-        className="mySwiper"
-      >
-        <div className="">
-          {Cardswipkuliner.map((card) => (
-            <SwiperSlide>
-              <div className=" d-flex justify-content-center align-items-center">
-                <div className="img-kuliner">
-                  <img src={card.images}></img>
-                <p>{card.title}</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </div>
-      </Swiper>
-    </>
+    <Swiper
+      slidesPerView={3}
+      freeMode={true}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[FreeMode, Pagination]}
+      className="mySwiper"
+    >
+      {Cardswipkuliner.map((card) => (
+        <SwiperSlide key={card.id}>
+          <div className="d-flex justify-content-center align-items-center">
+            <div className="img-kuliner" style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.7)" }}>
+              <img src={card.images} alt={card.title} />
+              <p>{card.title}</p>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

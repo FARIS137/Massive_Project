@@ -1,120 +1,45 @@
-// import Container from "react-bootstrap/Container";
-// import Navbar from "react-bootstrap/Navbar";
-// import Nav from "react-bootstrap/Nav";
-// import NavDropdown from "react-bootstrap/NavDropdown";
-// import { Link } from "react-router-dom";
-
-// const Navbarwisata = () => {
-//   return (
-//     <Navbar className="Nav" expand="lg">
-//       <Container>
-//         <div className="d-flex justify-content-between w-100">
-//           <Navbar.Brand style={{ color: "white" }} href="#home">
-//             Tour Tech
-//           </Navbar.Brand>
-//           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//         </div>
-//         <Navbar.Collapse id="basic-navbar-nav">
-//           <Nav className="ml-auto" activeKey="/home">
-//             <Nav.Item>
-//               <Nav.Link style={{ color: "white", marginRight: "50px" }}>
-//                 <Link to="/home" className="text-white text-decoration-none">
-//                   Beranda
-//                 </Link>
-//               </Nav.Link>
-//             </Nav.Item>
-//             <NavDropdown
-//               id="nav-dropdown-dark-example"
-//               title={<span style={{ color: "white" }}>Wisata</span>}
-//               menuVariant="white"
-//               style={{ marginRight: "50px" }}
-//             >
-//               <NavDropdown.Item>
-//                 <Link to="/wisataA" className="text-decoration-none text-dark">
-//                   Alam
-//                 </Link>
-//               </NavDropdown.Item>
-//               <NavDropdown.Item>
-//                 <Link to="/wisataS" className="text-decoration-none text-dark">
-//                   Sejarah
-//                 </Link>
-//               </NavDropdown.Item>
-//               <NavDropdown.Item href="/wisata">
-//                 <Link to="/wisata" className="text-decoration-none text-dark">
-//                   Budaya
-//                 </Link>
-//               </NavDropdown.Item>
-//             </NavDropdown>
-//             <NavDropdown
-//               id="nav-dropdown-dark-example"
-//               title={<span style={{ color: "white" }}>Pemandu</span>}
-//               menuVariant="white"
-//               style={{ marginRight: "50px" }}
-//             >
-//               <NavDropdown.Item>
-//                 <Link
-//                   to="/datapemandu"
-//                   className="text-decoration-none text-dark"
-//                 >
-//                   Data pemandu
-//                 </Link>
-//               </NavDropdown.Item>
-//               <NavDropdown.Item>
-//                 <Link
-//                   to="/daftarpemandu"
-//                   className="text-decoration-none text-dark"
-//                 >
-//                   Daftar
-//                 </Link>
-//               </NavDropdown.Item>
-//             </NavDropdown>
-//             <Nav.Item>
-//               <Nav.Link
-//                 style={{
-//                   color: "white",
-//                   marginRight: "50px",
-//                   textDecoration: "none",
-//                 }}
-//                 eventKey="/testimoni"
-//               >
-//                 Testimoni
-//               </Nav.Link>
-//             </Nav.Item>
-//             <NavDropdown
-//               id="nav-dropdown-dark-example"
-//               title={<span style={{ color: "white" }}>User</span>}
-//               menuVariant="white"
-//             >
-//               <NavDropdown.Item>
-//                 <Link to="/akunsaya" className="text-decoration-none text-dark">
-//                   Akun saya
-//                 </Link>
-//               </NavDropdown.Item>
-//               <NavDropdown.Item href="/login">
-//                 <Link to="/" className="text-decoration-none text-dark">
-//                   Logout
-//                 </Link>
-//               </NavDropdown.Item>
-//             </NavDropdown>
-//           </Nav>
-//         </Navbar.Collapse>
-//       </Container>
-//     </Navbar>
-//   );
-// };
-
-// export default Navbarwisata;
-
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
-import Imguser from "../../assets/img/pemandu/chesa.png";
+import { Link, useNavigate } from "react-router-dom";
+import Imguser from "../../assets/img/pemandu/user-icon-on-transparent-background-free-png.webp";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const Navbarwisata = () => {
   const [navBackground, setNavBackground] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [name, setName] = useState("");
+  const [token, setToken] = useState("");
+  const [expire, setExpire] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    refreshToken();
+  }, []);
+  const refreshToken = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/token");
+      setToken(response.data.accessToken);
+      const decoded = jwtDecode(response.data.accessToken);
+      setName(decoded.name);
+      setExpire(decoded.exp);
+    } catch (error) {
+      if (error.response) {
+        navigate("/");
+      }
+    }
+  };
+
+  const Logout = async () => {
+    try {
+      await axios.delete("http://localhost:5000/logout");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 70) {
@@ -130,13 +55,11 @@ const Navbarwisata = () => {
       window.removeEventListener("scroll", changeBackground);
     };
   }, []);
-
   const activeStyle = {
     backgroundColor: "gray",
     color: "blue",
     transition: "background-color 0.3s ease-in-out",
   };
-
   return (
     <Navbar
       className={`Nav ${navBackground ? "bg-blue" : ""}`}
@@ -156,7 +79,7 @@ const Navbarwisata = () => {
               <Nav.Link
                 as={Link}
                 to="/home"
-                style={{ color: "white", marginRight: "50px" }}
+                style={{ color: "white", marginRight: "30px" }}
                 activeStyle={activeStyle}
               >
                 Beranda
@@ -166,7 +89,7 @@ const Navbarwisata = () => {
               id="wisata-dropdown"
               title="Wisata"
               menuVariant="white"
-              style={{ marginRight: "50px" }}
+              style={{ marginRight: "30px" }}
             >
               <NavDropdown.Item as={Link} to="/wisataA">
                 Alam
@@ -182,7 +105,7 @@ const Navbarwisata = () => {
               id="pemandu-dropdown"
               title="Pemandu"
               menuVariant="white"
-              style={{ marginRight: "50px" }}
+              style={{ marginRight: "30px" }}
             >
               <NavDropdown.Item as={Link} to="/datapemandu">
                 Data pemandu
@@ -195,7 +118,7 @@ const Navbarwisata = () => {
               <Nav.Link
                 as={Link}
                 to="/testimoni"
-                style={{ color: "white", marginRight: "50px" }}
+                style={{ color: "white", marginRight: "30px" }}
                 activeStyle={activeStyle}
               >
                 Testimoni
@@ -205,7 +128,7 @@ const Navbarwisata = () => {
               <Nav.Link
                 as={Link}
                 to="/artikel"
-                style={{ color: "white", marginRight: "50px" }}
+                style={{ color: "white", marginRight: "30px" }}
                 activeStyle={activeStyle}
               >
                 Artikel
@@ -215,13 +138,13 @@ const Navbarwisata = () => {
               src={Imguser}
               alt="Chesa"
               className="mt-2"
-              style={{ height: "24px", width: "23px" }}
+              style={{ height: "24px", width: "100%" }}
             />
-            <NavDropdown id="user-dropdown" title="Chesa" menuVariant="white">
+            <NavDropdown id="user-dropdown" title={name} menuVariant="white" style={{marginRight: "2rem"}}>
               <NavDropdown.Item as={Link} to="/akunsaya">
                 Akun saya
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/">
+              <NavDropdown.Item as={Link} onClick={Logout}>
                 Logout
               </NavDropdown.Item>
             </NavDropdown>

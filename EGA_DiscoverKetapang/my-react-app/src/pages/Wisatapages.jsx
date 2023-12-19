@@ -121,10 +121,10 @@ const Wisatapages = () => {
               </p>
               <p>ditampilkan dalam acara-acara khusus.</p>
             </div>
-            <div className=" mt-4 d-flex justify-content-center align-items-center">
-              <img className="pe-5" src={pic1}></img>
-              <img className="pe-5" src={pic2}></img>
-              <img src={pic3}></img>
+            <div className=" mt-1 d-flex justify-content-center align-items-center" >
+              <img className="pe-5" style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6 )" }} src={pic1}></img>
+              <img className="pe-5" style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6 )" }} src={pic2}></img>
+              <img  style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 1 )" }} src={pic3}></img>
             </div>
           </div>
         </div>

@@ -82,139 +82,142 @@ const detailWisataA2 = () => {
           />
         </div>
       </div>
-      <div
-        className="bg"
-        style={{
-          background:
-            "linear-gradient(0deg, rgba(11, 76, 113, 0.72) 22.58%, rgba(41,89,67) 67.9%)",
-          paddingTop: "50px",
-          paddingBottom: "50px",
-        }}
-      >
+      <div style={{ backgroundColor: "#404040" }}>
         <div
-          className={`animate-in-2 ${isVisible2 ? "show" : ""} `}
-          onClick={resetScroll}
+          className="bg pb-5"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(204.85, 187.42, 174.81, 0), rgba(11.25, 75.76, 113.48, 0.72))",
+            paddingTop: "50px",
+            paddingBottom: "50px",
+          }}
         >
-          <div className="detail-box">
-            <Link to="/wisataA">
-              <svg
-                className="back-button"
-                xmlns="http://www.w3.org/2000/svg"
-                width="33"
-                height="31"
-                viewBox="0 0 33 31"
-                fill="none"
+          <div
+            className={`animate-in-2 ${isVisible2 ? "show" : ""} `}
+            onClick={resetScroll}
+          >
+            <div className="detail-box">
+              <Link to="/wisataA">
+                <svg
+                  className="back-button"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="33"
+                  height="31"
+                  viewBox="0 0 33 31"
+                  fill="none"
+                >
+                  <path
+                    d="M30.3634 15.5H3M3 15.5L16.1344 3M3 15.5L16.1344 28"
+                    stroke="white"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+              <div className="detail-header">
+                <div>
+                  <h1 className="text-light">Pulau Pelapis</h1>
+                </div>
+
+                <hr></hr>
+                <img className="image1" src={pic1}></img>
+              </div>
+
+              <div className="detail-text">
+                <p>
+                  Pulau Pelapis, atau dikenal juga sebagai Pulau Kabung,
+                  terletak di muara Sungai Kapuas, yang merupakan sungai
+                  terpanjang di Indonesia, di pesisir utara Kalimantan Barat.
+                  Pulau ini, terletak sekitar 1-2 kilometer dari pantai,
+                  memiliki peran ekologis yang penting sebagai bagian dari
+                  ekosistem sungai dan pesisir. Fungsi ekologisnya mencakup
+                  penopang keanekaragaman hayati, menjadi habitat bagi flora dan
+                  fauna pesisir yang khas
+                </p>
+                <p>
+                  Lokasi pulau ini mendekat dengan muara sungai juga memengaruhi
+                  pola hidrologis sekitarnya, yang melibatkan perubahan air
+                  sungai, pasang-surut laut, dan sedimentasi sungai. Pulau
+                  Pelapis biasanya dapat diakses melalui transportasi air
+                  seperti perahu atau kapal, membuatnya potensial sebagai
+                  destinasi bagi peneliti, pengamat lingkungan, atau wisatawan
+                  yang tertarik dengan kehidupan pesisir.
+                </p>
+                <p>
+                  Selain itu, pulau ini mungkin memiliki peran dalam kehidupan
+                  masyarakat lokal, seperti sebagai area penangkapan ikan atau
+                  tempat berlabuh sementara para nelayan. Pulau-pulau kecil
+                  seperti Pulau Pelapis juga dapat memiliki dampak pada aspek
+                  sosial dan budaya masyarakat sekitarnya serta menjadi objek
+                  pemantauan lingkungan untuk memahami perubahan iklim dan
+                  ekosistem.
+                </p>
+              </div>
+              <div
+                className={`animate-in-3 ${isVisible3 ? "show" : ""}  mx-auto `}
+                onClick={resetScroll}
               >
-                <path
-                  d="M30.3634 15.5H3M3 15.5L16.1344 3M3 15.5L16.1344 28"
-                  stroke="white"
-                  strokeWidth="5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <div className="detail-table">
+                  <h3 style={{ color: "White" }}>Informasi Wisata</h3>
+                </div>
+                <Detailtable
+                  alamat="Desa Pelapis, Kepulauan Karimata, Kabupaten Kayong Utara, Kalimantan Barat"
+                  hari="Senin - Ahad"
+                  jam="08.00 - 17.00 WIB"
+                  harga="IDR 10.000"
+                  image1={guide1}
+                  image2={guide2}
+                  image3={guide3}
+                  image4={guide4}
                 />
-              </svg>
-            </Link>
-            <div className="detail-header">
-              <div>
-                <h1 className="text-light">Pulau Pelapis</h1>
               </div>
-
-              <hr></hr>
-              <img className="image1" src={pic1}></img>
-            </div>
-
-            <div className="detail-text">
-              <p>
-                Pulau Pelapis, atau dikenal juga sebagai Pulau Kabung, terletak
-                di muara Sungai Kapuas, yang merupakan sungai terpanjang di
-                Indonesia, di pesisir utara Kalimantan Barat. Pulau ini,
-                terletak sekitar 1-2 kilometer dari pantai, memiliki peran
-                ekologis yang penting sebagai bagian dari ekosistem sungai dan
-                pesisir. Fungsi ekologisnya mencakup penopang keanekaragaman
-                hayati, menjadi habitat bagi flora dan fauna pesisir yang khas
-              </p>
-              <p>
-                Lokasi pulau ini mendekat dengan muara sungai juga memengaruhi
-                pola hidrologis sekitarnya, yang melibatkan perubahan air
-                sungai, pasang-surut laut, dan sedimentasi sungai. Pulau Pelapis
-                biasanya dapat diakses melalui transportasi air seperti perahu
-                atau kapal, membuatnya potensial sebagai destinasi bagi
-                peneliti, pengamat lingkungan, atau wisatawan yang tertarik
-                dengan kehidupan pesisir.
-              </p>
-              <p>
-                Selain itu, pulau ini mungkin memiliki peran dalam kehidupan
-                masyarakat lokal, seperti sebagai area penangkapan ikan atau
-                tempat berlabuh sementara para nelayan. Pulau-pulau kecil
-                seperti Pulau Pelapis juga dapat memiliki dampak pada aspek
-                sosial dan budaya masyarakat sekitarnya serta menjadi objek
-                pemantauan lingkungan untuk memahami perubahan iklim dan
-                ekosistem.
-              </p>
-            </div>
-            <div
-              className={`animate-in-3 ${isVisible3 ? "show" : ""}  mx-auto `}
-              onClick={resetScroll}
-            >
-              <div className="detail-table">
-                <h3 style={{ color: "White" }}>Informasi Wisata</h3>
-              </div>
-              <Detailtable
-                alamat="Desa Pelapis, Kepulauan Karimata, Kabupaten Kayong Utara, Kalimantan Barat"
-                hari="Senin - Ahad"
-                jam="08.00 - 17.00 WIB"
-                harga="IDR 10.000"
-                image1={guide1}
-                image2={guide2}
-                image3={guide3}
-                image4={guide4}
-              />
-            </div>
-            <div
-              className={`animate-in-4 ${isVisible4 ? "show" : ""}  mx-auto `}
-              onClick={resetScroll}
-            >
-              <div className="detail-more">
-                <h2 style={{ marginLeft: "80px", color: "white" }}>
-                  Kunjungi Destinasi Wisata yang lain
-                </h2>
-                <div className="more-pic">
-                  <Link style={{ textDecoration: "none" }} to="">
-                    <div
-                      style={{
-                        backgroundImage: `url(${more1})`,
-                        backgroundRepeat: "no-repeat",
-                        height: "40vh",
-                        width: "300px",
-                      }}
-                    >
-                      <p>Pantai Tanjung Belandang</p>
-                    </div>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="">
-                    <div
-                      style={{
-                        backgroundImage: `url(${more2})`,
-                        backgroundRepeat: "no-repeat",
-                        height: "40vh",
-                        width: "300px",
-                      }}
-                    >
-                      <p>Bukit Batu Daya</p>
-                    </div>
-                  </Link>
-                  <Link style={{ textDecoration: "none" }} to="">
-                    <div
-                      style={{
-                        backgroundImage: `url(${more3})`,
-                        backgroundRepeat: "no-repeat",
-                        height: "40vh",
-                        width: "300px",
-                      }}
-                    >
-                      <p>Air Terjun Batu Arang</p>
-                    </div>
-                  </Link>
+              <div
+                className={`animate-in-4 ${isVisible4 ? "show" : ""}  mx-auto `}
+                onClick={resetScroll}
+              >
+                <div className="detail-more">
+                  <h2 style={{ marginLeft: "80px", color: "white" }}>
+                    Kunjungi Destinasi Wisata yang lain
+                  </h2>
+                  <div className="more-pic">
+                    <Link style={{ textDecoration: "none" }} to="">
+                      <div
+                        style={{
+                          backgroundImage: `url(${more1})`,
+                          backgroundRepeat: "no-repeat",
+                          height: "40vh",
+                          width: "300px",
+                        }}
+                      >
+                        <p>Pantai Tanjung Belandang</p>
+                      </div>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="">
+                      <div
+                        style={{
+                          backgroundImage: `url(${more2})`,
+                          backgroundRepeat: "no-repeat",
+                          height: "40vh",
+                          width: "300px",
+                        }}
+                      >
+                        <p>Bukit Batu Daya</p>
+                      </div>
+                    </Link>
+                    <Link style={{ textDecoration: "none" }} to="">
+                      <div
+                        style={{
+                          backgroundImage: `url(${more3})`,
+                          backgroundRepeat: "no-repeat",
+                          height: "40vh",
+                          width: "300px",
+                        }}
+                      >
+                        <p>Air Terjun Batu Arang</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
