@@ -34,18 +34,25 @@ const CenteredCard = () => {
               Festival
             </Card.Text>
             <Card.Text className="text-light me-4">
-              Festival Budaya Ketapang biasanya menampilkan beragam kegiatan
-              dan pertunjukan budaya, seperti tarian tradisional, musik
-              tradisional, pameran seni, pameran kerajinan tangan, serta kuliner
-              khas daerah tersebut. Acara ini juga dapat mencakup berbagai lomba
-              seperti lomba memasak, lomba tari, dan kompetisi seni.
+              Festival Budaya Ketapang biasanya menampilkan beragam kegiatan dan
+              pertunjukan budaya, seperti tarian tradisional, musik tradisional,
+              pameran seni, pameran kerajinan tangan, serta kuliner khas daerah
+              tersebut. Acara ini juga dapat mencakup berbagai lomba seperti
+              lomba memasak, lomba tari, dan kompetisi seni.
             </Card.Text>
           </div>
-          <div className="image-container">
-            <img src={pic1}></img>
-            <img src={pic2}></img>
-            <img src={pic3}></img>
-          </div>
+          <img
+            style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6 )" }}
+            src={pic1}
+          ></img>
+          <img
+            style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6 )" }}
+            src={pic3}
+          ></img>
+          <img
+            style={{ boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.6 )", marginRight: "2rem" }}
+            src={pic2}
+          ></img>
         </div>
       </Card>
     </div>
