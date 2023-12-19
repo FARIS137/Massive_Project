@@ -16,7 +16,7 @@ const CenteredCard2 = () => {
             <Card.Text className="fs-4 text-light text-center">
               Rumah Adat Melayu
             </Card.Text>
-            <img src={imageAdat} alt="Wisata Image" />
+            <img style={{boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.4)"}} src={imageAdat} alt="Wisata Image" />
             <Link
               to="/detailwisataS2"
               className="d-flex justify-content-center"
@@ -34,7 +34,7 @@ const CenteredCard2 = () => {
             <Card.Text className="fs-4 text-light text-center">
               Rumah Adat Dayak
             </Card.Text>
-            <img src={imageMakam} alt="Wisata Image" />
+            <img style={{boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.4)"}} src={imageMakam} alt="Wisata Image" />
             <Link
               to="/detailwisataS3"
               className="d-flex justify-content-center"
