@@ -150,7 +150,7 @@ const Datapemandu = () => {
             </div>
           </div>
         </div>
-        <div className="container d-flex justify-content-center align-items-center w-100  mt-5">
+        <div className="container justify-content-between align-items-center w-100  mt-5">
           <hr className="mx-5" />
           <div
             className={`animate-in-3 ${
@@ -178,7 +178,7 @@ const Datapemandu = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-4">
+            <div style={{ paddingLeft: "150px" }} className="col-4">
               <div className="img-pemandu  ">
                 <img className="rounded-2" src={P3} alt="mila" />
               </div>

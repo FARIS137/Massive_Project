@@ -35,7 +35,7 @@ const CenteredCard = () => {
             </Card.Text>
             <Link
               style={{ textDecoration: "none" }}
-              to="/detailwisataS1"
+              to="/detailWisataS1"
               className="d-flex justify-content-center"
             >
               <button className="rounded-2 btn-more">Selengkapnya</button>

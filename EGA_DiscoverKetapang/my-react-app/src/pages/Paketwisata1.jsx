@@ -251,8 +251,9 @@ const Paketwisata1 = () => {
                         <li>Tugu Ale-Ale</li>
                       </ul>
                       <button
-                        className="btn btn-primary"
+                        className="btn "
                         style={{
+                          backgroundColor: "#2c8bc4",
                           marginLeft: "4rem",
                           marginTop: "13.5rem",
                         }}
@@ -318,8 +319,9 @@ const Paketwisata1 = () => {
                         <li>Tugu Ale-Ale</li>
                       </ul>
                       <button
-                        className="btn btn-primary"
+                        className="btn "
                         style={{
+                          backgroundColor: "#2c8bc4",
                           marginLeft: "4rem",
                           marginTop: "13.5rem",
                         }}
@@ -384,8 +386,9 @@ const Paketwisata1 = () => {
                         <li>Tugu Ale-Ale</li>
                       </ul>
                       <button
-                        className="btn btn-primary"
+                        className="btn "
                         style={{
+                          backgroundColor: "#2c8bc4",
                           marginLeft: "4rem",
                           marginTop: "13.5rem",
                         }}

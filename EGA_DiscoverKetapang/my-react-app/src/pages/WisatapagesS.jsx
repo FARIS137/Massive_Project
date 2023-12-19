@@ -132,11 +132,10 @@ const WisatapagesS = () => {
         >
           <div className="text-center">
             <h1 className="text-dark pt-5">Wisata Sejarah</h1>
-            <div style={{ lineHeight: "10px" }} className="mt-4 mb-5">
+            <div style={{ lineHeight: "15px" }} className="mt-4 mb-5">
               <p className="text-dark">
                 Ketapang, Kalimantan Barat juga menawarkan sejumlah tempat
-                wisata sejarah yang menarik. Berikut adalah beberapa destinasi
-                sejarah di Ketapang.
+                wisata sejarah yang menarik. Berikut adalah beberapa destinasi sejarah di Ketapang.
               </p>
               <p className="text-dark">
                 Berikut adalah beberapa destinasi sejarah di Ketapang
@@ -152,7 +151,7 @@ const WisatapagesS = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",
-            height: "100vh",
+            height: "110vh",
             fontFamily: "Times New Roman",
           }}
         >

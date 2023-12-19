@@ -1,61 +1,60 @@
 // Import statements (keep your existing imports)
-import React, { useState, useEffect } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import axios from 'axios' // Don't forget to import axios
-import Navbarwisata from '../Component/Fragments/Navbarwisata'
-import Footercomponent from '../Component/Fragments/Footercomponent'
+import React, { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import axios from "axios"; // Don't forget to import axios
+import Navbarwisata from "../Component/Fragments/Navbarwisata";
+import Footercomponent from "../Component/Fragments/Footercomponent";
 
 const Testimonipages = () => {
-  const [testimonials, setTestimonials] = useState([])
+  const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/ulasan')
-        setTestimonials(response.data)
+        const response = await axios.get("http://localhost:5000/ulasan");
+        setTestimonials(response.data);
       } catch (error) {
-        console.error('Error fetching testimonials:', error)
+        console.error("Error fetching testimonials:", error);
       }
-    }
-    fetchTestimonials()
-  }, [])
+    };
+    fetchTestimonials();
+  }, []);
 
   const handleFormSubmit = async (event) => {
-    event.preventDefault()
-    const feedbackText = event.target.feedback.value
+    event.preventDefault();
+    const feedbackText = event.target.feedback.value;
 
     if (feedbackText) {
       try {
         // Send a new testimonial to the Express API
-        await axios.post('http://localhost:5000/ulasan', {
+        await axios.post("http://localhost:5000/ulasan", {
           ulasan: feedbackText,
-        })
+        });
 
         // Fetch updated testimonials after adding a new one
-        const response = await axios.get('http://localhost:5000/ulasan');
+        const response = await axios.get("http://localhost:5000/ulasan");
         setTestimonials(response.data);
-    
+
         // setTestimonials((prevTestimonials) => [
         //   ...prevTestimonials,
         //   newTestimonial,
         // ])
-        event.target.feedback.value = ''
+        event.target.feedback.value = "";
       } catch (error) {
-        console.error('Error adding testimonial:', error)
+        console.error("Error adding testimonial:", error);
       }
     }
-  }
-  
+  };
 
   return (
     <div className="">
       <div className="navbar-banner ">
         <Navbarwisata className="Navbarwisata" />
         <div className="banner-content">
-          <div className="banner-text" style={{ textAlign: 'center' }}>
+          <div className="banner-text" style={{ textAlign: "center" }}>
             Ulasan Para Wisatawan
           </div>
         </div>
@@ -63,7 +62,7 @@ const Testimonipages = () => {
       <div className="cardtestimoni">
         <h2 className="text-cardtestimoni">"Apa Kata Mereka ?"</h2>
       </div>
-      <div className="swiper-container">
+      <div className="swiper-container ">
         <Swiper
           slidesPerView={3}
           spaceBetween={20}
@@ -107,7 +106,7 @@ const Testimonipages = () => {
       </div>
       <Footercomponent></Footercomponent>
     </div>
-  )
-}
+  );
+};
 
-export default Testimonipages
+export default Testimonipages;

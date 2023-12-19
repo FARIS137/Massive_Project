@@ -3,32 +3,28 @@ import { Link } from "react-router-dom";
 import Footercomponent from "../Component/Fragments/Footercomponent";
 import Navbarwisata from "../Component/Fragments/Navbarwisata";
 import Bgimage from "../assets/img/pemandu/BgAkun.png";
-import image1 from "../assets/img/pemandu/chesa.png";
+import image1 from "../assets/img/pemandu/user-icon-on-transparent-background-free-png.webp";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const Akunsayapages = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  // Fetch user data from the backend
-  const fetchUserData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/users/{id}");
-      setUser(response.data); // Assuming the API response is an object with name, email, and password properties
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    // Fetch user data when the component mounts
-    fetchUserData();
+    refreshToken();
   }, []);
-
-  const { name, email, password } = user;
+  const refreshToken = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/token");
+      setToken(response.data.accessToken);
+      const decoded = jwtDecode(response.data.accessToken);
+      setName(decoded.name);
+      setEmail(decoded.email);
+    } catch (error) {}
+  };
 
   return (
     <>
@@ -83,7 +79,7 @@ const Akunsayapages = () => {
               </div>
               <div className="col-md-7 text-center text-white ml-auto">
                 <h2 className="mb-4 fw-bold">Akun Saya</h2>
-                <form className="login-form">
+                <form className="login-form mt-5">
                   <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
@@ -104,20 +100,9 @@ const Akunsayapages = () => {
                       readOnly
                     />
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      value={password}
-                      readOnly
-                    />
-                  </div>
                 </form>
               </div>
             </div>
-
             <div className="button" style={{ marginLeft: "880px" }}>
               <Link
                 to="/edit"

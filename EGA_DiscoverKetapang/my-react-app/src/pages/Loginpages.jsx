@@ -9,6 +9,7 @@ const Loginpages = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+  const [submitted, setSubmitted] = useState(false); // Track if the form is submitted
   const navigation = useNavigate();
 
   const Auth = async (e) => {
@@ -22,9 +23,14 @@ const Loginpages = () => {
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
+        setSubmitted(true); // Set submitted to true after form submission
+        setTimeout(() => {
+          setMsg(""); // Reset msg state after 5 seconds
+        }, 2000);
       }
     }
   };
+
   return (
     <>
       <div className="login">
@@ -41,7 +47,7 @@ const Loginpages = () => {
           {" "}
           <div className="body">
             <div className="login-container">
-              <div className="text-center text-white lh-1 mb-5">
+              <div className="text-center text-white lh-1 mb-2">
                 <h2 className="fw-bold">
                   <span style={{ color: "#5BBCFC" }}>Discover</span> <br />
                   <span style={{ color: "white" }}>Ketapang</span>
@@ -52,7 +58,20 @@ const Loginpages = () => {
                 </p>
               </div>
               <form onSubmit={Auth} className="login-form">
-                <p className="has text-centered">{msg}</p>
+                <p
+                  style={{
+                    color: "white",
+                    fontSize: "15px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                    backgroundColor: submitted && msg ? "red" : "transparent", // Updated condition
+                    transition: "opacity 0.5s ease-in-out",
+                  }}
+                  className="has text-centered"
+                >
+                  {msg}
+                </p>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <input
