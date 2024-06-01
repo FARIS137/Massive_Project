@@ -7,7 +7,7 @@ function CarouselWS2() {
     <div className="d-flex justify-content-center align-items-center vh-60">
       <div style={{ width: "40%", position: "absolute", marginRight: "30rem" }}>
         <div className="user d-flex gap-4 "></div>
-        <img src={image1} />
+        <img style={{boxShadow: "1px 2px 10px 4px rgba(0, 0, 0, 0.4)"}} src={image1} />
       </div>
     </div>
   );
