@@ -72,5 +72,10 @@ Content-Type: application/json
 PUT http://localhost:5000/change-password
 
 
+<<<<<<< HEAD
+=======
+###
+
+>>>>>>> d049bd8e5b7d283e06b6403db79a9622bc2707e8
 
 

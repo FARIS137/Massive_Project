@@ -104,7 +104,11 @@ const Formpembayaran = () => {
           </Link>
           <div className="detail-header">
             <div>
+<<<<<<< HEAD
               <h1 className="text-light ">Form Pemesanan Tiket</h1>
+=======
+              <h1 className="text-light ">Form Pemesanan Wisata</h1>
+>>>>>>> d049bd8e5b7d283e06b6403db79a9622bc2707e8
             </div>
           </div>
           <div className="d-flex justify-content-evenly mb-5">

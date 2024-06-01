@@ -30,6 +30,10 @@ router.get("/ulasan", getUlasan);
 router.post("/ulasan", Komen);
 router.get("/formpayment", getPayment);
 router.post("/formpayment", payments);
+<<<<<<< HEAD
 router.put("/update"); 
+=======
+router.put("/update");
+>>>>>>> d049bd8e5b7d283e06b6403db79a9622bc2707e8
 
 module.exports = router;
